@@ -1,0 +1,281 @@
+@font-face {
+  font-family: 'gt-walsheim-bold';
+  src: url("fonts/GTWalsheim-Bold.eot?#iefix") format("embedded-opentype"), url("fonts/GTWalsheim-Bold.woff") format("woff"), url("fonts/GTWalsheim-Bold.ttf") format("truetype"), url("fonts/GTWalsheim-Bold.svg#fonts/GTWalsheim-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gt-walsheim';
+  src: url("fonts/GTWalsheim.eot?#iefix") format("embedded-opentype"), url("fonts/GTWalsheim.woff") format("woff"), url("fonts/GTWalsheim.ttf") format("truetype"), url("fonts/GTWalsheim.svg#fonts/GTWalsheim") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clarendon-Bold';
+  src: url("fonts/ClarendonBT-Bold.eot?#iefix") format("embedded-opentype"), url("fonts/ClarendonBT-Bold.woff") format("woff"), url("fonts/ClarendonBT-Bold.ttf") format("truetype"), url("fonts/ClarendonBT-Bold.svg#ClarendonBT-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 3, sass/style.scss */
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0px !important;
+  margin: 0px !important;
+  overflow: hidden;
+}
+
+/* line 11, sass/style.scss */
+#wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+/* line 15, sass/style.scss */
+#wrapper #nav {
+  position: absolute;
+  left: 35px;
+  top: 70px;
+  display: block;
+  z-index: 1000;
+}
+/* line 21, sass/style.scss */
+#wrapper #nav .tag {
+  font-family: 'gt-walsheim';
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 5px;
+  margin: 2px 0px;
+  padding: 3 5px;
+  background-color: #000;
+  color: #fff;
+}
+/* line 31, sass/style.scss */
+#wrapper #nav .tag:hover {
+  cursor: pointer;
+  background-color: #F79532;
+}
+
+/* line 38, sass/style.scss */
+#title {
+  position: absolute;
+  font-family: 'Clarendon-Bold';
+  font-size: 52px;
+  left: 35px;
+  top: 0px;
+  z-index: 1000;
+  color: #000;
+}
+
+/* line 48, sass/style.scss */
+#bk {
+  position: absolute;
+  font-family: 'gt-walsheim';
+  font-size: 18;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  color: #66d8e0;
+}
+
+/*|||*** POSTS ***|||*/
+/* line 59, sass/style.scss */
+div[bouncy="ball"] {
+  position: absolute;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 65, sass/style.scss */
+#catalog {
+  position: absolute;
+  display: none;
+  overflow: scroll;
+  width: Calc(100% - 115px);
+  height: Calc(100% - 180px);
+  left: 35px;
+  top: 72px;
+  padding: 20px;
+  border: 10px solid #000;
+  background: #fff;
+  z-index: 1000;
+}
+/* line 77, sass/style.scss */
+#catalog .close {
+  position: fixed;
+  right: 50;
+  top: 90;
+  font-family: 'gt-walsheim-bold';
+  font-size: 36px;
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  cursor: pointer;
+  color: #F79532;
+}
+/* line 89, sass/style.scss */
+#catalog .project {
+  width: 100%;
+  height: Calc(100% - 50px);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: block;
+}
+/* line 95, sass/style.scss */
+#catalog .project .title {
+  margin-top: 25px;
+  margin-left: 30px;
+  padding: 2px 5px;
+  position: absolute;
+  font-family: 'Clarendon-Bold';
+  font-size: 36px;
+  color: #66d8e0;
+  border-bottom: 4px solid #66d8e0;
+  z-index: 2;
+}
+/* line 106, sass/style.scss */
+#catalog .project .gallery {
+  float: left;
+  position: absolute;
+  left: Calc(30% + 30px);
+  width: 60%;
+  height: 100%;
+  max-height: 90%;
+  overflow-y: visible;
+  overflow-x: hidden;
+}
+/* line 115, sass/style.scss */
+#catalog .project .gallery .gallery-item {
+  position: relative;
+  width: 100%;
+  display: none;
+}
+/* line 119, sass/style.scss */
+#catalog .project .gallery .gallery-item .gallery-icon {
+  text-align: center;
+}
+/* line 121, sass/style.scss */
+#catalog .project .gallery .gallery-item .gallery-icon img {
+  display: inline-block;
+}
+/* line 126, sass/style.scss */
+#catalog .project .gallery .gallery-item .gallery-icon.landscape img {
+  margin: 0 auto;
+  width: 95%;
+  height: auto;
+  margin-top: 50px;
+}
+/* line 134, sass/style.scss */
+#catalog .project .gallery .gallery-item .gallery-icon.portrait img {
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+/* line 141, sass/style.scss */
+#catalog .project .gallery .show {
+  display: block;
+}
+/* line 145, sass/style.scss */
+#catalog .project p {
+  width: Calc(30% - 30px);
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 60%;
+  float: left;
+  font-family: 'gt-walsheim';
+  font-size: 14px;
+  z-index: 2;
+}
+/* line 155, sass/style.scss */
+#catalog .project .info {
+  width: Calc(30% - 30px);
+  margin-right: 60%;
+  float: left;
+  font-family: 'gt-walsheim';
+  font-size: 14px;
+  z-index: 2;
+}
+/* line 162, sass/style.scss */
+#catalog .project .info div, #catalog .project .info a {
+  font-family: 'gt-walsheim-bold';
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 0px;
+  padding: 1px 3px;
+  border-bottom: 2px solid #66d8e0;
+  color: #000;
+  display: inline-block;
+}
+/* line 173, sass/style.scss */
+#catalog .project .info p {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+/* line 181, sass/style.scss */
+#catalog .project:nth-of-type(1) {
+  margin-top: 0;
+}
+/* line 184, sass/style.scss */
+#catalog .project:last-of-type {
+  margin-bottom: 30px;
+}
+/* line 187, sass/style.scss */
+#catalog .clear {
+  clear: both;
+}
+
+/* line 192, sass/style.scss */
+.slider-controls {
+  float: left;
+  position: absolute;
+  left: Calc(30% + 30px);
+  width: 60%;
+  height: 100%;
+  max-height: 90%;
+  opacity: 0;
+}
+/* line 200, sass/style.scss */
+.slider-controls .left {
+  position: absolute;
+  font-family: 'gt-walsheim-bold';
+  font-size: 48px;
+  top: 50%;
+  left: 20;
+  cursor: pointer;
+  color: #F79532;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+/* line 210, sass/style.scss */
+.slider-controls .right {
+  position: absolute;
+  font-family: 'gt-walsheim-bold';
+  font-size: 48px;
+  top: 50%;
+  right: 20;
+  cursor: pointer;
+  color: #F79532;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* line 222, sass/style.scss */
+.slider-controls:hover {
+  opacity: 1;
+}
+
+/* line 226, sass/style.scss */
+#catalog::-webkit-scrollbar {
+  width: 12px;
+  margin-right: 3px;
+}
+
+/* line 230, sass/style.scss */
+#catalog::-webkit-scrollbar-thumb:vertical {
+  background-color: #000;
+  border: 3px solid #fff;
+  border-radius: 12px;
+}
