@@ -10,39 +10,44 @@
 
         return $(this).each(function() {
             
+            var nums = [1, -1];
+            var directionX = nums[Math.floor(Math.random()*2)];
+            var directiony = nums[Math.floor(Math.random()*2)];
             var $this = $(this),
                 $parent = $this.parent(),
                 height = $parent.height(),
                 width = $parent.width(),
                 top = Math.floor(Math.random() * (height - $this.height())),
                 left = Math.floor(Math.random() * (width - $this.width())),
-                vectorX = Math.round(Math.random() * settings.speed) + 1,
-                vectorX = vectorX * (Math.random() < 0.5 ? 1 : -1),
-                vectorY = Math.round(Math.random() * settings.speed) + 1,
-                vectorY = vectorY * (Math.random() < 0.5 ? 1 : -1);
-
-            // place initialy in a random location
+                // vectorX = (Math.random(2) * settings.speed) + 0.5,
+                // vectorX = vectorX * (Math.random() < 0.5 ? 1 : -1),
+                // vectorY = (Math.random(2) * settings.speed) + 0.5,
+                // vectorY = vectorY * (Math.random() < 0.5 ? 1 : -1);
+                vectorX = (Math.floor(Math.random() * 3) + 1),
+                vectorY = (Math.floor(Math.random() * 3) + 1);
             $this.data('vector', {
-                'x': vectorX,
-                'y': vectorY
+                'x': vectorX * directionX,
+                'y': vectorY * directiony
             });
+            
 
             var move = function($e) {
                 
                 var offset = $e.offset(),
+                    position = $e.position(),
                     width = $e.width(),
                     height = $e.height(),
                     vector = $e.data('vector'),
                     $parent = $e.parent();
-
-                if (offset.left <= 0 && vector.x < 0) {
+                // console.log($e.data('vector'));
+                if (offset.left <= 0) {
                     vector.x = -1 * vector.x;
                 }
                 if ((offset.left + width) >= $parent.width()) {
                     offset.left = $parent.width() - width;
                     vector.x = -1 * vector.x;
                 }
-                if (offset.top <= 0 && vector.y < 0) {
+                if (offset.top <= 0) {
                     vector.y = -1 * vector.y;
                 }
                 if ((offset.top + height) >= $parent.height()) {
@@ -50,19 +55,29 @@
                     vector.y = -1 * vector.y;
                 }
 
-                $e.css({
-                    'top': offset.top + vector.y + 'px',
-                    'left': offset.left + vector.x + 'px'
-                }).data('vector', {
-                    'x': vector.x,
-                    'y': vector.y
-                });
+                if(open == false) {
+                    $e.css({
+                    'top': offset.top + vector.y,
+                    'left': offset.left + vector.x
+                    }).data('vector', {
+                        'x': vector.x,
+                        'y': vector.y
+                    });
+                } else {
+                    $e.css({
+                    'top': offset.top + 'px',
+                    'left': offset.left + 'px'
+                    }).data('vector', {
+                        'x': vector.x,
+                        'y': vector.y
+                    });
+                }
                 
-                if (open == false) {
+                // if (open == false) {
                     setTimeout(function() {
                         move($e);
                     }, 50);
-                } else {}
+                // } else {}
             };
 
             move($this);
@@ -84,16 +99,17 @@
         });
 
         $('.catalog').click(function(){
+            $(this).addClass('open');
             $('#catalog').fadeIn(1000);
-
+            $('.close').fadeIn();
+            $('.catalog').addClass('open');
             open = true;
 
             $(".close").on("click", function(){
                 $('#catalog').fadeOut(600);
+                $('.close').fadeOut(600);
+                $('.catalog').removeClass('open');
                 open = false;
-                $("div[bouncy='ball']").bounce({
-                    'speed': 0
-                });
             });
         })
 
@@ -109,7 +125,7 @@
             openpost($this);
         });
         $(bounce).bounce({
-            'speed': 2
+            'speed': 1
         });
 
         $(bounce).click(function() {
@@ -140,6 +156,8 @@
             id = "#" + cl;
 
         $('#catalog').fadeIn();
+        $('.close').fadeIn();
+        $('.catalog').addClass('open');
 
         var scrolltop = $(id).offset().top;
         $('#catalog').animate({
@@ -164,10 +182,9 @@
 
         $(".close").on("click", function(){
             $('#catalog').fadeOut();
+            $('.close').fadeOut();
+            $('.catalog').removeClass('open');
             open = false;
-            $("div[bouncy='ball']").bounce({
-                'speed': 0
-            });
         });
     }
 
@@ -215,12 +232,18 @@
             var newImg = galleryid +' .gallery-item';
             
             $(newImg).eq(newindex).css({'margin-left': ($(galleryid).width() + 20) * -1 + 'px'});
-            oldImg.animate({'margin-left': $(galleryid).width() + 20 + 'px'});
+            oldImg.animate({
+                'margin-left': $(galleryid).width() + 20 + 'px',
+                'opacity': 0
+            }, 300);
 
             setTimeout(function() {
                 oldImg.removeClass('show');
                 $(newImg).eq(newindex).addClass('show');
-                $(newImg).eq(newindex).animate({'margin-left' : '0px'},500);
+                $(newImg).eq(newindex).animate({
+                    'margin-left' : '0px',
+                    'opacity': 1
+                },500);
             }, 550);    
             console.log(newImg);
 
@@ -234,12 +257,18 @@
             var newImg = galleryid +' .gallery-item';
 
             $(newImg).eq(newindex).css({'margin-left': $(galleryid).width() + 20 + 'px'});
-            oldImg.animate({'margin-left': ($(galleryid).width() + 20) * -1 + 'px'});
+            oldImg.animate({
+                'margin-left': ($(galleryid).width() + 20) * -1 + 'px',
+                'opacity': 0
+            },300);
 
             setTimeout(function() {
                 oldImg.removeClass('show');
                 $(newImg).eq(newindex).addClass('show');
-                $(newImg).eq(newindex).animate({'margin-left' : '0px'},500);
+                $(newImg).eq(newindex).animate({
+                    'margin-left' : '0px',
+                    'opacity': 1
+                },500);
             }, 550);    
         }
     }

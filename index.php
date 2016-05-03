@@ -18,7 +18,7 @@ get_header(); ?>
 
 	<div id="wrapper">
 	    <div id="title">zeray studio</div>
-	    <div id="bk">Made In Brooklyn, NY, USA</div>
+	    <div id="bk">Made In Brooklyn NY, USA</div>
 	    <div id="nav">
 	    	<div class="tag">Manifesto</div>
 	    	<div class="tag catalog">Catalog</div>
@@ -36,8 +36,8 @@ get_header(); ?>
 			endforeach; 
 			wp_reset_postdata();
 		?>
-	    <div id='catalog'>	
-		    <div class='close'>X</div>
+		<div class='close'>X</div>
+	    <div id='catalog'>
 		    <?php
 				$args = array( 'posts_per_page' => -1, 'category_name' => 'highlighted', 'order'=> 'ASC', 'orderby' => 'date' );
 				$postslist = get_posts( $args );
@@ -48,7 +48,7 @@ get_header(); ?>
 						<div class='title'><?php the_title(); ?></div>
 						<?php the_content(); ?>
 						<div class='info'>
-							<div>Materials & dimensions</div>
+							<div>Product Info</div>
 							<?php if( get_field('materials') ): ?>
 								<p><?php the_field('materials'); ?></p>
 							<?php endif; ?>
